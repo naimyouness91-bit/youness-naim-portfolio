@@ -1,0 +1,76 @@
+export const PROJECTS = [
+  {
+    id: 1,
+    title: 'EduAdmin Pro',
+    description:
+      'Système complet de gestion scolaire avec interface administrative et fonctionnalités avancées.',
+    features: ['Front-end & back-end complets', 'Modélisation UML rigoureuse'],
+    technologies: ['Laravel 10', 'React 18', 'MySQL 8'],
+    github: null,
+    demo: null,
+    image: null,
+  },
+  {
+    id: 2,
+    title: 'WorkSphere',
+    description:
+      'Application collaborative de gestion de projets et d\'équipes.',
+    features: [
+      'Gestion des tâches',
+      'Gestion des projets',
+      'Collaboration en temps réel',
+      'Système d\'authentification sécurisé',
+    ],
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+    github: null,
+    demo: null,
+    image: null,
+  },
+  {
+    id: 3,
+    title: 'Application de réservation des véhicules de service',
+    description:
+      'Plateforme de gestion et réservation de véhicules pour usage professionnel.',
+    features: [
+      'Gestion des réservations',
+      'Gestion des disponibilités en temps réel',
+      'Base de données MySQL optimisée',
+    ],
+    technologies: ['React.js', 'Node.js', 'Express.js', 'MySQL'],
+    github: null,
+    demo: null,
+    image: null,
+  },
+  {
+    id: 4,
+    title: 'Système de Gestion des Réservations Hôtelières',
+    description:
+      'Application web dédiée à la gestion des réservations hôtelières avec interface moderne et intuitive.',
+    features: [
+      'Gestion des chambres',
+      'Gestion des clients',
+      'Réservations',
+      'Annulation',
+      'Check-in / Check-out',
+      'API REST',
+      'Authentification JWT',
+      'Génération de PDF',
+    ],
+    technologies: [
+      'React.js',
+      'Vite',
+      'Node.js',
+      'Express.js',
+      'MySQL',
+      'Sequelize',
+      'Tailwind CSS',
+      'Axios',
+      'React Router',
+      'JWT',
+      'PDFKit',
+    ],
+    github: null,
+    demo: null,
+    image: null,
+  },
+]
