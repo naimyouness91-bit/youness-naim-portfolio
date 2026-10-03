@@ -6,7 +6,7 @@ export const PROJECTS = [
       'Système complet de gestion scolaire avec interface administrative et fonctionnalités avancées.',
     features: ['Front-end & back-end complets', 'Modélisation UML rigoureuse'],
     technologies: ['Laravel 10', 'React 18', 'MySQL 8'],
-    github: null,
+    github: 'https://github.com/naimyouness91-bit/eduadmin-pro',
     demo: null,
     image: null,
   },
