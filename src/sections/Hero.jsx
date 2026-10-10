@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import profileImg from '../assets/profile.jpg'
+import { useLanguage } from '../context/LanguageContext'
 
 const TECH_STACK = [
   'React.js',
@@ -11,6 +12,7 @@ const TECH_STACK = [
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const animationFrame = requestAnimationFrame(() => setIsVisible(true))
@@ -34,7 +36,7 @@ export default function Hero() {
             }`}
           >
             <span className="inline-flex items-center rounded-full border border-[color:var(--accent-border)] bg-[color:var(--accent-subtle)] px-3 py-1 text-xs font-medium text-[color:var(--accent-primary)] shadow-sm backdrop-blur-sm">
-              Développeur Full Stack
+              {t.hero.badge}
             </span>
           </div>
 
@@ -55,7 +57,7 @@ export default function Hero() {
                 : 'translate-y-4 opacity-0'
             }`}
           >
-            Full Stack Developer
+            {t.hero.title}
           </h2>
 
           <p
@@ -65,10 +67,7 @@ export default function Hero() {
                 : 'translate-y-4 opacity-0'
             }`}
           >
-            Développeur Full Stack en formation, spécialisé dans la conception
-            et le développement d'applications web avec React.js, Laravel,
-            Node.js et Express.js, et dans la gestion des bases de données
-            MySQL.
+            {t.hero.description}
           </p>
 
           <div
@@ -98,17 +97,17 @@ export default function Hero() {
             <a
               href="#projects"
               className="btn btn-primary justify-center sm:justify-start"
-              aria-label="View my projects"
+              aria-label={t.hero.ctaProjects}
             >
-              View My Projects
+              {t.hero.ctaProjects}
             </a>
             <a
               href="/CV_Youness_Naim_2026.pdf"
               download
               className="btn justify-center sm:justify-start"
-              aria-label="Download CV"
+              aria-label={t.hero.ctaCv}
             >
-              Download CV
+              {t.hero.ctaCv}
             </a>
           </div>
         </div>
@@ -127,7 +126,7 @@ export default function Hero() {
               <div className="relative aspect-[4/5] overflow-hidden rounded-xl">
                 <img
                   src={profileImg}
-                  alt="Youness Naim - Full Stack Developer"
+                  alt={t.hero.imageAlt}
                   className="h-full w-full object-cover object-center"
                   loading="eager"
                 />

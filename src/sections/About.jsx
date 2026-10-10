@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 
 const INFO_ITEMS = [
   {
-    label: 'Location',
+    key: 'location',
     value: 'Tit Mellil, Casablanca',
   },
   {
-    label: 'Current formation',
+    key: 'formation',
     value: 'Diplôme de Technicien Spécialisé en Développement Digital – Full Stack',
   },
   {
-    label: 'Institution',
+    key: 'institution',
     value: 'OFPPT – CFPMS Tit Mellil – Casablanca',
   },
   {
-    label: 'Period',
+    key: 'period',
     value: '2024 - 2026',
   },
 ]
@@ -22,6 +23,7 @@ const INFO_ITEMS = [
 export default function About() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,10 +52,10 @@ export default function About() {
           }`}
         >
           <span className="text-sm font-medium uppercase tracking-wide text-[color:var(--accent-primary)]">
-            About Me
+            {t.about.eyebrow}
           </span>
           <h2 className="mt-4 font-semibold tracking-tight text-[color:var(--text-primary)]">
-            Je transforme des idées en applications web modernes.
+            {t.about.title}
           </h2>
         </div>
 
@@ -64,16 +66,10 @@ export default function About() {
             }`}
           >
             <p className="text-lg leading-relaxed text-[color:var(--text-secondary)]">
-              Développeur Full Stack en formation, spécialisé dans la conception
-              et le développement d'applications web avec React.js, Laravel,
-              Node.js et Express.js, et dans la gestion des bases de données
-              MySQL.
+              {t.about.paragraph1}
             </p>
             <p className="text-lg leading-relaxed text-[color:var(--text-secondary)]">
-              Rigoureux et orienté résolution de problèmes, avec un intérêt
-              marqué pour les technologies web et l'apprentissage continu. Mon
-              objectif est de créer des applications web fiables, structurées et
-              accessibles, en privilégiant un code propre et maintenable.
+              {t.about.paragraph2}
             </p>
           </div>
 
@@ -84,13 +80,13 @@ export default function About() {
           >
             <div className="card h-full">
               <h3 className="text-lg font-semibold text-[color:var(--text-primary)]">
-                Informations
+                {t.about.infoTitle}
               </h3>
               <dl className="mt-6 space-y-4">
                 {INFO_ITEMS.map((item) => (
-                  <div key={item.label}>
+                  <div key={item.key}>
                     <dt className="text-sm font-medium text-[color:var(--text-muted)]">
-                      {item.label}
+                      {t.about.info[item.key]}
                     </dt>
                     <dd className="mt-1 text-base text-[color:var(--text-secondary)]">
                       {item.value}

@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { SKILL_CATEGORIES } from '../data/skills'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Skills() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const { t, localize } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,14 +34,13 @@ export default function Skills() {
           }`}
         >
           <span className="text-sm font-medium uppercase tracking-wide text-[color:var(--accent-primary)]">
-            COMPÉTENCES
+            {t.skills.eyebrow}
           </span>
           <h2 className="mt-4 font-semibold tracking-tight text-[color:var(--text-primary)]">
-            Technologies & outils
+            {t.skills.title}
           </h2>
           <p className="mt-4 max-w-3xl text-lg text-[color:var(--text-secondary)]">
-            Un ensemble de technologies utilisées pour concevoir, développer et
-            structurer des applications web modernes.
+            {t.skills.description}
           </p>
         </div>
 
@@ -48,7 +49,7 @@ export default function Skills() {
             const Icon = category.icon
             return (
               <div
-                key={category.title}
+                key={category.id}
                 className={`card flex h-full flex-col transition-all duration-500 ease-out will-change-transform ${
                   isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
                 }`}
@@ -59,17 +60,17 @@ export default function Skills() {
                     <Icon size={18} aria-hidden="true" />
                   </div>
                   <h3 className="text-lg font-semibold text-[color:var(--text-primary)]">
-                    {category.title}
+                    {localize(category.title)}
                   </h3>
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <span
-                      key={skill}
+                      key={localize(skill)}
                       className="inline-flex items-center rounded-md border border-[color:var(--border-subtle)] bg-[color:var(--bg-secondary)]/70 px-2.5 py-1 text-sm text-[color:var(--text-secondary)] transition-colors hover:border-[color:var(--border-default)] hover:text-[color:var(--text-primary)]"
                     >
-                      {skill}
+                      {localize(skill)}
                     </span>
                   ))}
                 </div>

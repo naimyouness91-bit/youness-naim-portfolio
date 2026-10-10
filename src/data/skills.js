@@ -9,6 +9,7 @@ import {
 
 export const SKILL_CATEGORIES = [
   {
+    id: 'frontend',
     title: 'Frontend',
     icon: Laptop,
     skills: [
@@ -23,22 +24,30 @@ export const SKILL_CATEGORIES = [
     ],
   },
   {
+    id: 'backend',
     title: 'Backend',
     icon: Terminal,
     skills: ['Laravel', 'PHP', 'Python', 'Node.js', 'Express.js'],
   },
   {
-    title: 'Databases',
+    id: 'databases',
+    title: { fr: 'Bases de données', en: 'Databases' },
     icon: Database,
     skills: ['MySQL', 'MongoDB', 'Sequelize', 'NoSQL'],
   },
   {
-    title: 'Architecture & Security',
+    id: 'architecture',
+    title: { fr: 'Architecture & Sécurité', en: 'Architecture & Security' },
     icon: Shield,
-    skills: ['UML', 'Modélisation de projets', 'Sécurité des données'],
+    skills: [
+      'UML',
+      { fr: 'Modélisation de projets', en: 'Project Design' },
+      { fr: 'Sécurité des données', en: 'Data Security' },
+    ],
   },
   {
-    title: 'Tools',
+    id: 'tools',
+    title: { fr: 'Outils', en: 'Tools' },
     icon: GitBranch,
     skills: [
       'Git',
@@ -51,7 +60,8 @@ export const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: 'Other',
+    id: 'other',
+    title: { fr: 'Autres', en: 'Other' },
     icon: Layers,
     skills: ['REST APIs', 'Clean Code'],
   },

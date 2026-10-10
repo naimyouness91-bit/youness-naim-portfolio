@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { EDUCATION } from '../data/education'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Education() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,10 +34,10 @@ export default function Education() {
           }`}
         >
           <span className="text-sm font-medium uppercase tracking-wide text-[color:var(--accent-primary)]">
-            FORMATION
+            {t.education.eyebrow}
           </span>
           <h2 className="mt-4 font-semibold tracking-tight text-[color:var(--text-primary)]">
-            Parcours académique
+            {t.education.title}
           </h2>
         </div>
 

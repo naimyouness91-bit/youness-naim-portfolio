@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { EXPERIENCE } from '../data/experience'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Experience() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const { t, localize } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,10 +34,10 @@ export default function Experience() {
           }`}
         >
           <span className="text-sm font-medium uppercase tracking-wide text-[color:var(--accent-primary)]">
-            EXPÉRIENCE
+            {t.experience.eyebrow}
           </span>
           <h2 className="mt-4 font-semibold tracking-tight text-[color:var(--text-primary)]">
-            Expérience professionnelle
+            {t.experience.title}
           </h2>
         </div>
 
@@ -51,7 +53,7 @@ export default function Experience() {
               <div className="flex flex-col gap-6 md:flex-row md:items-start">
                 <div className="md:w-48 md:flex-shrink-0">
                   <span className="inline-flex rounded-md border border-[color:var(--border-subtle)] bg-[color:var(--surface)]/80 px-2.5 py-1 text-sm text-[color:var(--text-secondary)] backdrop-blur-sm">
-                    {item.period}
+                    {localize(item.period)}
                   </span>
                 </div>
 
@@ -61,7 +63,7 @@ export default function Experience() {
 
                   <div className="card">
                     <h3 className="text-xl font-semibold text-[color:var(--text-primary)]">
-                      {item.role}
+                      {localize(item.role)}
                     </h3>
                     <div className="mt-2 flex flex-wrap items-center gap-2 text-base text-[color:var(--text-secondary)]">
                       <span className="font-medium">{item.company}</span>
@@ -72,9 +74,9 @@ export default function Experience() {
                     {item.responsibilities.length > 0 && (
                       <ul className="mt-4 space-y-2 text-base leading-relaxed text-[color:var(--text-secondary)]">
                         {item.responsibilities.map((responsibility) => (
-                          <li key={responsibility} className="flex items-start gap-2">
+                          <li key={localize(responsibility)} className="flex items-start gap-2">
                             <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--accent-primary)] opacity-70" />
-                            <span>{responsibility}</span>
+                            <span>{localize(responsibility)}</span>
                           </li>
                         ))}
                       </ul>

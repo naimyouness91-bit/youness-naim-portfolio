@@ -1,3 +1,5 @@
+import LanguageProvider from './context/LanguageProvider'
+import ThemeProvider from './context/ThemeProvider'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Hero from './sections/Hero'
@@ -11,19 +13,21 @@ import './App.css'
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <main className="pt-16">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Education />
-        <Contact />
-        <Footer />
-      </main>
-    </>
+    <LanguageProvider>
+      <ThemeProvider>
+        <Navbar />
+        <main className="pt-16">
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <Education />
+          <Contact />
+          <Footer />
+        </main>
+      </ThemeProvider>
+    </LanguageProvider>
   )
 }
 

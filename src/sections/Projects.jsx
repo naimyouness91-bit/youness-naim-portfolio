@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { PROJECTS } from '../data/projects'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
+  const { t, localize } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,14 +34,13 @@ export default function Projects() {
           }`}
         >
           <span className="text-sm font-medium uppercase tracking-wide text-[color:var(--accent-primary)]">
-            PROJETS
+            {t.projects.eyebrow}
           </span>
           <h2 className="mt-4 font-semibold tracking-tight text-[color:var(--text-primary)]">
-            Mes projets
+            {t.projects.title}
           </h2>
           <p className="mt-4 max-w-3xl text-lg text-[color:var(--text-secondary)]">
-            Quelques projets réalisés dans le cadre de ma formation et de mes
-            expériences de développement.
+            {t.projects.description}
           </p>
         </div>
 
@@ -57,16 +58,16 @@ export default function Projects() {
                   {project.title}
                 </h3>
                 <p className="mt-3 leading-relaxed text-[color:var(--text-secondary)]">
-                  {project.description}
+                  {localize(project.description)}
                 </p>
 
                 {project.features && project.features.length > 0 && (
                   <div className="mt-4">
                     <ul className="space-y-2 text-sm text-[color:var(--text-secondary)]">
                       {project.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
+                        <li key={localize(feature)} className="flex items-start gap-2">
                           <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--accent-primary)] opacity-70" />
-                          <span>{feature}</span>
+                          <span>{localize(feature)}</span>
                         </li>
                       ))}
                     </ul>
@@ -93,7 +94,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn"
-                      aria-label={`View ${project.title} on GitHub`}
+                      aria-label={t.projects.githubAria.replace('{title}', project.title)}
                     >
                       GitHub
                     </a>
@@ -104,9 +105,9 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-primary"
-                      aria-label={`View live demo of ${project.title}`}
+                      aria-label={t.projects.demoAria.replace('{title}', project.title)}
                     >
-                      Live Demo
+                      {t.projects.ctaDemo}
                     </a>
                   )}
                 </div>

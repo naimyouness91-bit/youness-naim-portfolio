@@ -1,24 +1,25 @@
 import { useEffect, useRef, useState } from 'react'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { useLanguage } from '../context/LanguageContext'
 
 const CONTACT_INFO = [
   {
     id: 'email',
-    label: 'Email',
+    labelKey: 'email',
     value: 'naimyouness91@gmail.com',
     href: 'mailto:naimyouness91@gmail.com',
     icon: Mail,
   },
   {
     id: 'phone',
-    label: 'Téléphone',
+    labelKey: 'phone',
     value: '+212 610-848-268',
     href: 'tel:+212610848268',
     icon: Phone,
   },
   {
     id: 'location',
-    label: 'Localisation',
+    labelKey: 'location',
     value: 'Tit Mellil, Casablanca',
     href: null,
     icon: MapPin,
@@ -30,6 +31,7 @@ export default function Contact() {
   const [formStatus, setFormStatus] = useState(null)
   const sectionRef = useRef(null)
   const formRef = useRef(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,11 +53,7 @@ export default function Contact() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setFormStatus({
-      type: 'info',
-      message:
-        'Le formulaire n\'est pas connecté à un service d\'envoi pour le moment. Veuillez me contacter par email via le bouton ci-dessus.',
-    })
+    setFormStatus({ type: 'info' })
     if (formRef.current) {
       formRef.current.reset()
     }
@@ -70,14 +68,13 @@ export default function Contact() {
           }`}
         >
           <span className="text-sm font-medium uppercase tracking-wide text-[color:var(--accent-primary)]">
-            CONTACT
+            {t.contact.eyebrow}
           </span>
           <h2 className="mt-4 font-semibold tracking-tight text-[color:var(--text-primary)]">
-            Restons en contact
+            {t.contact.title}
           </h2>
           <p className="mt-4 max-w-3xl text-lg text-[color:var(--text-secondary)]">
-            Vous avez une opportunité, un projet ou souhaitez échanger ?
-            N&apos;hésitez pas à me contacter.
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -99,7 +96,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-[color:var(--text-muted)]">
-                      {item.label}
+                      {t.contact.info[item.labelKey]}
                     </p>
                     <p className="mt-1 break-all text-base text-[color:var(--text-primary)]">
                       {item.value}
@@ -140,7 +137,7 @@ export default function Contact() {
                   htmlFor="name"
                   className="block text-sm font-medium text-[color:var(--text-primary)]"
                 >
-                  Nom
+                  {t.contact.form.name}
                 </label>
                 <input
                   type="text"
@@ -149,7 +146,7 @@ export default function Contact() {
                   required
                   autoComplete="name"
                   className="mt-2 w-full rounded-lg border border-[color:var(--border-subtle)] bg-[color:var(--bg-secondary)]/70 px-3 py-2 text-[color:var(--text-primary)] placeholder:text-[color:var(--text-muted)] shadow-sm transition-colors focus:border-[color:var(--accent-primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-primary)]/20"
-                  placeholder="Votre nom"
+                  placeholder={t.contact.form.namePlaceholder}
                 />
               </div>
 
@@ -158,7 +155,7 @@ export default function Contact() {
                   htmlFor="email"
                   className="block text-sm font-medium text-[color:var(--text-primary)]"
                 >
-                  Email
+                  {t.contact.form.email}
                 </label>
                 <input
                   type="email"
@@ -167,7 +164,7 @@ export default function Contact() {
                   required
                   autoComplete="email"
                   className="mt-2 w-full rounded-lg border border-[color:var(--border-subtle)] bg-[color:var(--bg-secondary)]/70 px-3 py-2 text-[color:var(--text-primary)] placeholder:text-[color:var(--text-muted)] shadow-sm transition-colors focus:border-[color:var(--accent-primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-primary)]/20"
-                  placeholder="votre@email.com"
+                  placeholder={t.contact.form.emailPlaceholder}
                 />
               </div>
 
@@ -176,7 +173,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="block text-sm font-medium text-[color:var(--text-primary)]"
                 >
-                  Message
+                  {t.contact.form.message}
                 </label>
                 <textarea
                   id="message"
@@ -184,7 +181,7 @@ export default function Contact() {
                   rows={5}
                   required
                   className="mt-2 w-full rounded-lg border border-[color:var(--border-subtle)] bg-[color:var(--bg-secondary)]/70 px-3 py-2 text-[color:var(--text-primary)] placeholder:text-[color:var(--text-muted)] shadow-sm transition-colors focus:border-[color:var(--accent-primary)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent-primary)]/20"
-                  placeholder="Votre message..."
+                  placeholder={t.contact.form.messagePlaceholder}
                 />
               </div>
 
@@ -197,12 +194,12 @@ export default function Contact() {
                       : 'border-[color:var(--accent-border)] bg-[color:var(--accent-subtle)] text-[color:var(--accent-primary)]'
                   }`}
                 >
-                  {formStatus.message}
+                  {t.contact.form.status}
                 </div>
               )}
 
               <button type="submit" className="btn btn-primary w-full justify-center">
-                Envoyer le message
+                {t.contact.form.submit}
               </button>
             </form>
           </div>
